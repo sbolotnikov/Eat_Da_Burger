@@ -1,8 +1,10 @@
-<li>
-	{{burger_name}}
-{{#unless devoured}}
-	<button class="change-devoured" data-id="{{id}}"">EAT ME!</button>
- {{/unless}}
-	<button class="delete-burger" data-id="{{this.id}}">DELETE!</button>
-	
-</li>
+<div class="card" style="width: 18rem;">
+	<img class="card-img-top" src={{url1}} alt="burger img">
+	<div class="card-body">
+		<h3 class="nameLabel">{{burger_name}}</h3>
+		{{#unless devoured}}
+		<button class="change-devoured" data-id="{{id}}"">EAT ME!</button>
+            {{/unless}}
+	     <button class=" delete-burger" data-id="{{this.id}}">DELETE!</button>
+	</div>
+</div>

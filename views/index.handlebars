@@ -1,38 +1,27 @@
-<h1>Burgers!</h1>
-
-<h2>Burgers that are not taken yet!</h2>
-
-<ul>
-  {{#each burgers}}
-    {{#unless devoured}}
-      {{> burgers/burger-block devoured=false}}
-    {{/unless}}
-  {{/each}}
-</ul>
-
-<h2>Burgers that are devoured!</h2>
-
-<ul>
-  {{#each burgers}}
-    {{#if devoured}}
-      {{> burgers/burger-block devoured=true}}
-    {{/if}}
-  {{/each}}
-</ul>
-
-<h2>Add a Burger</h2>
-<form class="create-form">
-
+<div class="container style="max-width: 1440px; width: 100%; margin: 0;">
+  <h1 class="nameLabel" style="font-size:3rem; color:rebeccapurple">Eat Da Burger!</h1>
+  <form class=" create-form">
   <div class="form-group">
-    <label for="ca">Burger's Name:</label>
+    <label for="ca" style="font-size:2rem; color:white">Burger's Name:</label>
     <input type="text" id="ca" name="name">
+  <button type="submit" id="btn_ca">Add Burger</button>
   </div>
-{{!-- 
-  <div class="form-group">
-    <label for="sleepy">Sleepy?</label><br>
-    <input type="radio" name="sleepy" value="1" checked> Sleepy!<br>
-    <input type="radio" name="sleepy" value="0"> Awake
-  </div> --}}
-
-  <button type="submit">Add Burger</button>
-</form>
+  </form>
+  <h2 class="nameLabel" style="font-size: 2.5rem; color:rebeccapurple">Burgers that are not taken yet!</h2>
+  <div class="rowEatme">
+    {{#each burgers}}
+    {{#unless devoured}}
+    {{> burgers/burger-block devoured=false}}
+    {{/unless}}
+    {{/each}}
+    <div class="w-100"></div>
+  </div>
+  <h2 class="nameLabel"style="font-size: 2.5rem; color:rebeccapurple" >Burgers that are devoured!</h2>
+  <div class="rowEatme">
+    {{#each burgers}}
+    {{#if devoured}}
+    {{> burgers/burger-block devoured=true}}
+    {{/if}}
+    {{/each}}
+  </div>
+</div>

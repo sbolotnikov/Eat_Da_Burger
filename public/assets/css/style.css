@@ -1,19 +1,75 @@
-li {
-  padding: 5px;
-  margin: 5px;
-  background: #faebd7;
+.create-form {
+  width:100%;
+  max-width: 1440px;
+  margin: 0;
+  height: 200px;
+  background: rebeccapurple;
+  background-image: url(/assets/images/eatdaburger.png);
+  background-repeat: no-repeat;                                                                                                                                                                                                                                                                                                                                                                                           ;
+   background-size: contain; 
+   background-position: center right;
+   display:flex;
+   flex-wrap: wrap;
+   justify-content: center;
 }
-
-.label {
-  font-weight: bold;
+#ca{
+  margin-top: 10%;
+  box-shadow: #faebd7;
+  font-weight: bolder;
+  font-size: 2rem;
+  font-family: 'Times New Roman', Times, serif;
 }
-
-.create-update-form {
-  padding: 5px;
-  margin: 5px;
-  background: aqua;
+#btn_ca{
+  margin-top: 10%;
+  justify-self: stretch;
+  background-color: red;
+  font-size: 2rem;
+  font-family: 'Times New Roman', Times, serif;
 }
-
+.label{
+  color: red;
+  font-size: 2rem;
+  font-family: 'Times New Roman', Times, serif;
+}
+.nameLabel{
+  max-width: 1440px;
+  font-size:2rem;
+  font-family: 'Times New Roman', Times, serif;
+  align-self: auto;
+  text-align: center;
+}
 .form-group {
+  margin-bottom: 5px;
+}
+.card{
+min-width: 100px;
+margin-top: 10px;
+padding-top: 5px;
+padding-bottom: 5px;
+margin-bottom: 10px;
+display:flex;
+flex-wrap: wrap;
+justify-content: center;
+
+}
+.rowEatme{
+  max-width: 1440px;
+  width: 100%;
+  margin: 0;
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-content: space-between
+}
+  .card-img-top{
+  width: 90%;
+  height: 10rem;
+  align-self: auto;
+  margin-bottom: 5px; 
+}
+.change-devoured, .delete-burger{
+  width: 90%;
+  align-self: auto;
   margin-bottom: 5px;
 }
