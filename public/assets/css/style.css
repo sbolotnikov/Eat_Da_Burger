@@ -37,6 +37,7 @@
   font-family: 'Times New Roman', Times, serif;
   align-self: auto;
   text-align: center;
+  flex-wrap: wrap;
 }
 .form-group {
   margin-bottom: 5px;
