@@ -43,11 +43,11 @@ function objToSql(ob) {
 
 // Object for all our SQL statement functions.
 var orm = {
-  read: function(tableInput) {
+  read: function (tableInput) {
     var queryString = "SELECT * FROM ??;";
     return connectionQuery(queryString, [tableInput]);
   },
-  create: function(table, cols, vals, cb) {
+  create: function (table, cols, vals, cb) {
     var queryString = "INSERT INTO ??";
 
     queryString += " (";
@@ -58,12 +58,13 @@ var orm = {
     queryString += ") ";
 
     console.log(queryString);
-
-    return connectionQuery(queryString, [table, ...vals]);
+    console.log(vals)
+    // if (vals.length > 0) {
+      return connectionQuery(queryString, [table, ...vals]);
   },
 
   // An example of objColVals would be {name: panther, sleepy: true}
-  update: function(table, objColVals, condition, cb) {
+  update: function (table, objColVals, condition, cb) {
     var queryString = "UPDATE " + table;
 
     queryString += " SET ";
@@ -74,7 +75,7 @@ var orm = {
     console.log(queryString);
     return connectionQuery(queryString);
   },
-  delete: function(table, condition, cb) {
+  delete: function (table, condition, cb) {
     var queryString = "DELETE FROM " + table;
     queryString += " WHERE ";
     queryString += condition;

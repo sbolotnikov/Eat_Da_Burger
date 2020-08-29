@@ -22,7 +22,7 @@ $(".change-devoured").on("click", function (event) {
 });
 
 $(".create-form").on("submit", function (event) {
-  let newBurger = {};
+  // let newBurger = {};
   // Make sure to preventDefault on a submit event.
   event.preventDefault();
   var picURL = `https://pixabay.com/api/?key=17409987-87acf859f9545b0f00c73cdd0&q=${$("#ca").val().trim()}&image_type=photo&per_page=10`
@@ -32,20 +32,18 @@ $(".create-form").on("submit", function (event) {
   }).then(function (response1) {
     imgURL = response1.hits[Math.floor(Math.random() * response1.hits.length)].webformatURL;
     if (imgURL === '') { imgURL = '/assets/images/burger.png'; }
-    return newBurger = {
+    let burger_info= {
       burger_name: $("#ca").val().trim(),
       devoured: 0,
       url1: imgURL
     };
-
-    console.log(newBurger);
-  }).then(function(res){
+  // }).then(function(res){
     // Send the POST request.
-    // if (newBurger.burger_name != "") {
-console.log("Post request");
+
+
       $.ajax("/api/burgers", {
         type: "POST",
-        data: res
+        data: burger_info
       }).then(function (res) {
 
         console.log("created new Burger");
