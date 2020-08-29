@@ -28,8 +28,8 @@ Desktop version Form and Ready section
 ![Eat-Da-Burger](./images/img1.png) 
 Desktop version Ready and Devoured section
 ![Eat-Da-Burger](./images/img2.png) 
-
-![Eat-Da-Burger](./images/img3.png) 
+Mobile look
+![Eat-Da-Burger](./images/img3.jpg) 
 
 
 ## Contributing 
