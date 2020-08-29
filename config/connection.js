@@ -14,13 +14,6 @@ if (typeof process.env.JAWSDB_URL !="undefined") {
         database: 'burgers_db'
     })
 };
-// var connection = mysql.createConnection({
-//   host: "us-cdbr-east-02.cleardb.com",
-//   port: 3306,
-//   user: "b33c0c3b2bbb19",
-//   password: "e7bb66c2",
-//   database: "heroku_f13818dc98aac07"
-// });
 
 // Make connection.
 connection.connect(function(err) {
