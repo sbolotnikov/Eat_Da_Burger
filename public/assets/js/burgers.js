@@ -32,18 +32,20 @@ $(".create-form").on("submit", function (event) {
   }).then(function (response1) {
     imgURL = response1.hits[Math.floor(Math.random() * response1.hits.length)].webformatURL;
     if (imgURL === '') { imgURL = '/assets/images/burger.png'; }
-    newBurger = {
+    return newBurger = {
       burger_name: $("#ca").val().trim(),
       devoured: 0,
       url1: imgURL
     };
-    console.log(newBurger);
-    // Send the POST request.
-    if (newBurger.burger_name != "") {
 
+    console.log(newBurger);
+  }).then(function(res){
+    // Send the POST request.
+    // if (newBurger.burger_name != "") {
+console.log("Post request");
       $.ajax("/api/burgers", {
         type: "POST",
-        data: newBurger
+        data: res
       }).then(function (res) {
 
         console.log("created new Burger");
@@ -51,7 +53,7 @@ $(".create-form").on("submit", function (event) {
         location.reload();
       }
       );
-    }
+    // }
 
     console.log(newBurger)
   }).catch(function (error) {
