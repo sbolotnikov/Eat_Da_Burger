@@ -56,14 +56,10 @@ var orm = {
     queryString += "VALUES (";
     queryString += printQuestionMarks(vals.length);
     queryString += ") ";
-
-    console.log(queryString);
-    console.log(vals)
-    // if (vals.length > 0) {
-      return connectionQuery(queryString, [table, ...vals]);
+    return connectionQuery(queryString, [table, ...vals]);
   },
 
-  // An example of objColVals would be {name: panther, sleepy: true}
+  // An example of objColVals would be {burger_name: 'burger', devoured: 0}
   update: function (table, objColVals, condition, cb) {
     var queryString = "UPDATE " + table;
 
@@ -71,7 +67,6 @@ var orm = {
     queryString += objToSql(objColVals);
     queryString += " WHERE ";
     queryString += condition;
-
     console.log(queryString);
     return connectionQuery(queryString);
   },
@@ -84,5 +79,5 @@ var orm = {
   }
 };
 
-// Export the orm object for the model (cat.js).
+// Export the orm object for the model (burger.js).
 module.exports = orm;

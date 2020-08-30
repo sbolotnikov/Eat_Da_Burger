@@ -21,7 +21,6 @@ $(".change-devoured").on("click", function (event) {
 
 $(".create-form").on("submit", function (event) {
   let imgURL="";
-  // let newBurger = {};
   // Make sure to preventDefault on a submit event.
   event.preventDefault();
   console.log($("#ca").val().trim())
@@ -41,10 +40,7 @@ $(".create-form").on("submit", function (event) {
       devoured: 0,
       url1: imgURL
     };
-    // }).then(function(res){
     // Send the POST request.
-    console.log(imgURL);
-
     $.ajax("/api/burgers", {
       type: "POST",
       data: burger_info
@@ -55,7 +51,7 @@ $(".create-form").on("submit", function (event) {
       location.reload();
     }
     );
-    // }
+
 
     console.log(newBurger)
   }).catch(function (error) {

@@ -43,6 +43,8 @@ Mobile look
 
  Contact [sbolotnikov](mailto:sbolotnikov@gmail.com) 
 ## Review 
-  * Here is this repo link: https://github.com/sbolotnikov/Eat-Da-Burger
+  * Here is this repo link: https://github.com/sbolotnikov/Eat_Da_Burger
  
   * Link: [Eat Da Burger]( https://boiling-badlands-26235.herokuapp.com/)
+
+  * Link to updated portfolio: [Portfolio]( https://sbolotnikov.github.io/Responsive-Portfolio/)
