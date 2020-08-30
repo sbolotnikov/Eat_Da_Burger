@@ -1,5 +1,3 @@
-var imgURL;
-
 // Make sure we wait to attach our handlers until the DOM is fully loaded.
 
 $(".change-devoured").on("click", function (event) {
@@ -22,35 +20,41 @@ $(".change-devoured").on("click", function (event) {
 });
 
 $(".create-form").on("submit", function (event) {
+  let imgURL="";
   // let newBurger = {};
   // Make sure to preventDefault on a submit event.
   event.preventDefault();
+  console.log($("#ca").val().trim())
   var picURL = `https://pixabay.com/api/?key=17409987-87acf859f9545b0f00c73cdd0&q=${$("#ca").val().trim()}&image_type=photo&per_page=10`
   $.ajax({
     url: picURL,
     method: "GET",
   }).then(function (response1) {
+    console.log(response1)
+    if (response1.hits.length===0) {
+      imgURL = '/assets/images/burger.png'; 
+    }else{
     imgURL = response1.hits[Math.floor(Math.random() * response1.hits.length)].webformatURL;
-    if (imgURL === '') { imgURL = '/assets/images/burger.png'; }
-    let burger_info= {
+    }
+    let burger_info = {
       burger_name: $("#ca").val().trim(),
       devoured: 0,
       url1: imgURL
     };
-  // }).then(function(res){
+    // }).then(function(res){
     // Send the POST request.
+    console.log(imgURL);
 
+    $.ajax("/api/burgers", {
+      type: "POST",
+      data: burger_info
+    }).then(function (res) {
 
-      $.ajax("/api/burgers", {
-        type: "POST",
-        data: burger_info
-      }).then(function (res) {
-
-        console.log("created new Burger");
-        // Reload the page to get the updated list
-        location.reload();
-      }
-      );
+      console.log("created new Burger");
+      // Reload the page to get the updated list
+      location.reload();
+    }
+    );
     // }
 
     console.log(newBurger)
