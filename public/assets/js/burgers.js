@@ -20,7 +20,7 @@ $(".change-devoured").on("click", function (event) {
 });
 
 $(".create-form").on("submit", function (event) {
-  let imgURL="";
+  let imgURL = "";
   // Make sure to preventDefault on a submit event.
   event.preventDefault();
   console.log($("#ca").val().trim())
@@ -30,10 +30,10 @@ $(".create-form").on("submit", function (event) {
     method: "GET",
   }).then(function (response1) {
     console.log(response1)
-    if (response1.hits.length===0) {
-      imgURL = '/assets/images/burger.png'; 
-    }else{
-    imgURL = response1.hits[Math.floor(Math.random() * response1.hits.length)].webformatURL;
+    if (response1.hits.length === 0) {
+      imgURL = '/assets/images/burger.png';
+    } else {
+      imgURL = response1.hits[Math.floor(Math.random() * response1.hits.length)].webformatURL;
     }
     let burger_info = {
       burger_name: $("#ca").val().trim(),
@@ -45,36 +45,14 @@ $(".create-form").on("submit", function (event) {
       type: "POST",
       data: burger_info
     }).then(function (res) {
-
       console.log("created new Burger");
       // Reload the page to get the updated list
       location.reload();
     }
-    );
-    location.reload();
-
-    // console.log(newBurger)
-  }).catch(function (error) {
-    // if error use default
-
-    location.reload();
-
-
-  })
-
-
-
-  // Send the POST request.
-  // $.ajax("/api/burgers", {
-  //   type: "POST",
-  //   data: newBurger
-  // }).then(
-  //   function () {
-  //     console.log("created new Burger");
-     
-  //     location.reload();
-  //   }
-  // );
+    ).catch(function (error) {
+      if (error) throw error;
+    });
+  });
 });
 
 $(".delete-burger").on("click", function (event) {
