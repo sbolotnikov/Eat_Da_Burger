@@ -51,9 +51,9 @@ $(".create-form").on("submit", function (event) {
       location.reload();
     }
     );
+    location.reload();
 
-
-    console.log(newBurger)
+    // console.log(newBurger)
   }).catch(function (error) {
     // if error use default
 
@@ -65,16 +65,16 @@ $(".create-form").on("submit", function (event) {
 
 
   // Send the POST request.
-  $.ajax("/api/burgers", {
-    type: "POST",
-    data: newBurger
-  }).then(
-    function () {
-      console.log("created new Burger");
-      // Reload the page to get the updated list
-      location.reload();
-    }
-  );
+  // $.ajax("/api/burgers", {
+  //   type: "POST",
+  //   data: newBurger
+  // }).then(
+  //   function () {
+  //     console.log("created new Burger");
+     
+  //     location.reload();
+  //   }
+  // );
 });
 
 $(".delete-burger").on("click", function (event) {
