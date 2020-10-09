@@ -71,5 +71,19 @@ router.delete("/api/burgers/:id", function(req, res) {
   });
 });
 
+const axios = require("axios");
+router.get("/proxy/api/v1:link", function(req, res) {
+  let url_1=req.params.link.slice(7) + process.env.APIKey;
+
+  axios
+  .get(url_1)
+  .then(function(response) {
+    console.log(response.data.results);
+    res.send(response.data.results);
+  });
+
+    
+  
+});
 // Export routes for server.js to use.
 module.exports = router;
