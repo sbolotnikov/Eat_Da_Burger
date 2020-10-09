@@ -79,6 +79,8 @@ router.get("/proxy/api/v1:link", function(req, res) {
   .get(url_1)
   .then(function(response) {
     console.log(response.data.results);
+    // fixing CORS
+    res.header('Access-Control-Allow-Origin', '*');
     res.send(response.data);
   });
 
