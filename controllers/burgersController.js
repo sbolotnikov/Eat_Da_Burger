@@ -79,7 +79,7 @@ router.get("/proxy/api/v1:link", function(req, res) {
   .get(url_1)
   .then(function(response) {
     console.log(response.data.results);
-    res.send(response.data.results);
+    res.send(response.data);
   });
 
     
