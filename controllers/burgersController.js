@@ -83,10 +83,11 @@ router.get("/proxy/api/v1:link", function (req, res) {
       res.send(response.data);
     });
 });
-router.get("/proxy/api/key/:link", function (req, res) {
-  let url_1 = "https://api.spoonacular.com/recipes/complexSearch?apiKey=" + process.env.APISpoon;
-  url_1 += req.params.link;
-
+router.get("/proxy/api/key/:set/:link", function (req, res) {
+  if (req.params.set === '0') {
+    let url_1 = "https://api.spoonacular.com/recipes/complexSearch?apiKey=" + process.env.APISpoon;
+    url_1 += req.params.link;
+  } else  let url_1 = req.params.link + process.env.APISpoon;
   axios
     .get(url_1)
     .then(function (response) {
