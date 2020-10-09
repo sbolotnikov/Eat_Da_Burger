@@ -83,8 +83,11 @@ router.get("/proxy/api/v1:link", function(req, res) {
     res.header('Access-Control-Allow-Origin', '*');
     res.send(response.data);
   });
-
-    
+});
+router.get("/proxy/api/key", function(req, res) {
+  
+    // res.header('Access-Control-Allow-Origin', '*');
+    res.send(process.env.APISpoon);
   
 });
 // Export routes for server.js to use.
