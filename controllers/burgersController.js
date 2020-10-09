@@ -83,11 +83,17 @@ router.get("/proxy/api/v1:link", function (req, res) {
       res.send(response.data);
     });
 });
-router.get("/proxy/api/key", function (req, res) {
-  // fixing CORS
-  res.header('Access-Control-Allow-Origin', '*');
-  res.send(process.env.APISpoon);
+router.get("/proxy/api/key/:link", function (req, res) {
+  let url_1 = "https://api.spoonacular.com/recipes/complexSearch?apiKey=" + process.env.APISpoon;
+  url_1 += req.params.link;
 
+  axios
+    .get(url_1)
+    .then(function (response) {
+      // fixing CORS
+      res.header('Access-Control-Allow-Origin', '*');
+      res.send(response.data);
+    });
 });
 // Export routes for server.js to use.
 module.exports = router;
