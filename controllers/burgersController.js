@@ -84,10 +84,12 @@ router.get("/proxy/api/v1:link", function (req, res) {
     });
 });
 router.get("/proxy/api/key/:set/:link", function (req, res) {
-  let url_1='';
+  let url_1 = '';
   if (req.params.set === '0') {
     url_1 = "https://api.spoonacular.com/recipes/complexSearch?apiKey=" + process.env.APISpoon + req.params.link;
-  } else { url_1 = req.params.link + process.env.APISpoon;}
+  }
+  else if (req.params.set === '1') { url_1 = `https://api.spoonacular.com/recipes/${req.params.link}/ingredientWidget.json?apiKey=` + process.env.APISpoon; }
+  else if (req.params.set === '2') { url_1 = `https://api.spoonacular.com/recipes/${req.params.link}/analyzedInstructions?apiKey=` + process.env.APISpoon; }
   console.log(url_1)
   axios
     .get(url_1)
