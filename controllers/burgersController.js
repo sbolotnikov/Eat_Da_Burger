@@ -75,8 +75,15 @@ const axios = require("axios");
 router.get("/proxy/api/:set/v1:link", function (req, res) {
   let url_1 = req.params.link.slice(7) + process.env.APIKey;
   if (req.params.set === '1') {
-    res.header('Access-Control-Allow-Origin', '*');
-    res.send(url_1);
+    axios
+      .get(url_1)
+      .then(function (response) {
+        // fixing CORS
+        console.log(response.headers.location);
+        res.header('Access-Control-Allow-Origin', '*');
+        res.send(response.headers.location);
+      });
+
   } else if (req.params.set === '0') {
     axios
       .get(url_1)
