@@ -72,30 +72,30 @@ router.delete("/api/burgers/:id", function (req, res) {
 });
 
 const axios = require("axios");
-router.get("/proxy/api/:set/v1:link", function (req, res) {
+router.get("/proxy/api/0/v1:link", function (req, res) {
   let url_1 = req.params.link.slice(7) + process.env.APIKey;
   console.log(url_1)
   axios.get(url_1)
-    .then(function (response) {
-      if (req.params.set === '1') {
-        // res.header('Access-Control-Allow-Origin', '*');
-        // res.send(url_1);
-        console.log(response.headers);
-        res.header('Access-Control-Allow-Origin', '*');
-        res.send(response.headers.location);
-        // axios.get(url_1)
-        //   .then(function (response) {
-        //     console.log(response.headers);
-        //     res.header('Access-Control-Allow-Origin', '*');
-        //     res.send(response.headers.location);
-        //   });
-
-      } else if (req.params.set === '0') {
+    .then(function (response) {   
         // fixing CORS
         console.log(response.data);
         res.header('Access-Control-Allow-Origin', '*');
-        res.send(response.data);
-      }
+        res.send(response.data);     
+    });
+
+});
+
+router.get("/proxy/api/1/v1:link", function (req, res) {
+  let url_1 = req.params.link.slice(7) + process.env.APIKey;
+  console.log(url_1)
+  fetch(url_1)
+    .then(function (response) {
+     
+
+        console.log(response.headers);
+        res.header('Access-Control-Allow-Origin', '*');
+        res.send(response.headers.location);
+
     });
 
 });
