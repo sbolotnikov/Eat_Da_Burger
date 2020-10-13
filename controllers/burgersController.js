@@ -87,19 +87,45 @@ router.get("/proxy/api/0/v1:link", function (req, res) {
 
 router.get("/proxy/api/1/v1:link", function (req, res) {
   let url_1 = req.params.link.slice(7) + process.env.APIKey;
-  // res.header('Access-Control-Allow-Origin', '*');
-  // res.send(url_1);
-  console.log(url_1);
-  fetch(url_1)
-    .then(response=>response.blob())
-    .then(function(imageBlob) {
-      res.header('Access-Control-Allow-Origin', '*');
-      res.send(URL.createObjectURL(imageBlob));
-    }).catch(err => {
-      console.log(err);
-    });
+  res.header('Access-Control-Allow-Origin', '*');
+  res.send(url_1);
 
+
+
+  // var reqNew = new XMLHttpRequest();
+  // reqNew.open('GET', url_1, false);
+  // reqNew.send(null);
+  // var headers = reqNew.getAllResponseHeaders().toLowerCase();
+  // console.log(headers);
+  // res.header('Access-Control-Allow-Origin', '*');
+  // res.send(header);
+
+
+
+
+  // console.log(url_1);
+  // fetch(url_1,{
+  //   // method: 'GET', // *GET, POST, PUT, DELETE, etc.
+  //   // mode: 'cors', // no-cors, *cors, same-origin
+  //   cache: 'no-cache', // *default, no-cache, reload, force-cache, only-if-cached
+  //   // credentials: 'same-origin', // include, *same-origin, omit
+  //   headers: {
+  //     'Content-Type': 'application/json'
+  //     // 'Content-Type': 'application/x-www-form-urlencoded',
+  //   },
+  //   redirect: 'follow', // manual, *follow, error
+  //   // referrerPolicy: 'no-referrer', // no-referrer, *no-referrer-when-downgrade, origin, origin-when-cross-origin, same-origin, strict-origin, strict-origin-when-cross-origin, unsafe-url
+  //   // body: JSON.stringify(data) // body data type must match "Content-Type" header
+  // }).then(response=>{
+  //     console.log(response.header);
+  //     // ).then(function(imageBlob) {
+  //     res.header('Access-Control-Allow-Origin', '*');
+  //     res.send(URL.createObjectURL(response.header));
+  //   }).catch(err => {
+  //     console.log(err);
+  //   });
 });
+
 router.get("/proxy/api/key/:set/:link", function (req, res) {
   let url_1 = '';
   if (req.params.set === '0') {
