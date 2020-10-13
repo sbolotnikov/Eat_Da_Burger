@@ -87,15 +87,16 @@ router.get("/proxy/api/0/v1:link", function (req, res) {
 
 router.get("/proxy/api/1/v1:link", function (req, res) {
   let url_1 = req.params.link.slice(7) + process.env.APIKey;
-  console.log(url_1)
+  // res.header('Access-Control-Allow-Origin', '*');
+  // res.send(url_1);
+  console.log(url_1);
   fetch(url_1)
-    .then(function (response) {
-     
-
-        console.log(response.headers);
-        res.header('Access-Control-Allow-Origin', '*');
-        res.send(response.headers.location);
-
+    .then(response=>response.blob())
+    .then(function(imageBlob) {
+      res.header('Access-Control-Allow-Origin', '*');
+      res.send(URL.createObjectURL(imageBlob));
+    }).catch(err => {
+      console.log(err);
     });
 
 });
