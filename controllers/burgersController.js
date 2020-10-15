@@ -2,6 +2,8 @@ var express = require("express");
 
 var router = express.Router();
 
+var fetch =require('node-fetch');
+
 // Import the model (cat.js) to use its database functions.
 var burger = require("../models/burger.js");
 
@@ -71,7 +73,10 @@ router.delete("/api/burgers/:id", function (req, res) {
     });
 });
 
+// proxy server for the What's for Dinner App
 const axios = require("axios");
+
+// route to get response from Google Places API
 router.get("/proxy/api/0/v1:link", function (req, res) {
   let url_1 = req.params.link.slice(7) + process.env.APIKey;
   console.log(url_1)
@@ -85,53 +90,33 @@ router.get("/proxy/api/0/v1:link", function (req, res) {
 
 });
 
+// route that gets the link to google picture by reference
 router.get("/proxy/api/1/v1:link", function (req, res) {
   let url_1 = req.params.link.slice(7) + process.env.APIKey;
-  res.header('Access-Control-Allow-Origin', '*');
-  res.send(url_1);
+  fetch(url_1,{
+    cache: 'no-cache',
+    headers: {
+      'Content-Type': 'application/json',
+      'Content-Type': 'application/x-www-form-urlencoded',
+    }
+  }).then(response=>{
 
-
-
-  // var reqNew = new XMLHttpRequest();
-  // reqNew.open('GET', url_1, false);
-  // reqNew.send(null);
-  // var headers = reqNew.getAllResponseHeaders().toLowerCase();
-  // console.log(headers);
-  // res.header('Access-Control-Allow-Origin', '*');
-  // res.send(header);
-
-
-
-
-  // console.log(url_1);
-  // fetch(url_1,{
-  //   // method: 'GET', // *GET, POST, PUT, DELETE, etc.
-  //   // mode: 'cors', // no-cors, *cors, same-origin
-  //   cache: 'no-cache', // *default, no-cache, reload, force-cache, only-if-cached
-  //   // credentials: 'same-origin', // include, *same-origin, omit
-  //   headers: {
-  //     'Content-Type': 'application/json'
-  //     // 'Content-Type': 'application/x-www-form-urlencoded',
-  //   },
-  //   redirect: 'follow', // manual, *follow, error
-  //   // referrerPolicy: 'no-referrer', // no-referrer, *no-referrer-when-downgrade, origin, origin-when-cross-origin, same-origin, strict-origin, strict-origin-when-cross-origin, unsafe-url
-  //   // body: JSON.stringify(data) // body data type must match "Content-Type" header
-  // }).then(response=>{
-  //     console.log(response.header);
-  //     // ).then(function(imageBlob) {
-  //     res.header('Access-Control-Allow-Origin', '*');
-  //     res.send(URL.createObjectURL(response.header));
-  //   }).catch(err => {
-  //     console.log(err);
-  //   });
+      res.header('Access-Control-Allow-Origin', '*');
+      res.send(response.url);
+    }).catch(err => {
+      console.log(err);
+    });
 });
-
+// route to get information from spoonacular API
 router.get("/proxy/api/key/:set/:link", function (req, res) {
   let url_1 = '';
   if (req.params.set === '0') {
+    // url for the search results from spoonacular API 
     url_1 = "https://api.spoonacular.com/recipes/complexSearch?apiKey=" + process.env.APISpoon + req.params.link;
   }
+  // url for recepies ingridients route
   else if (req.params.set === '1') { url_1 = `https://api.spoonacular.com/recipes/${req.params.link}/ingredientWidget.json?apiKey=` + process.env.APISpoon; }
+  // url for recepies detailed route
   else if (req.params.set === '2') { url_1 = `https://api.spoonacular.com/recipes/${req.params.link}/analyzedInstructions?apiKey=` + process.env.APISpoon; }
   console.log(url_1)
   axios
