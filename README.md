@@ -19,9 +19,9 @@
 * [Questions](#questions)
 * [Review](#review)
 ## Installation 
-You can clone or fork the repo. Or just visit the deployed site:  https://boiling-badlands-26235.herokuapp.com/.
+You can clone or fork the repo. Or just visit the deployed site:  https://eating-burger.onrender.com/.
 ## Usage 
-Visit the deployed site. https://boiling-badlands-26235.herokuapp.com/
+Visit the deployed site. https://eating-burger.onrender.com/
 
 
 Desktop version Form and Ready section
@@ -45,6 +45,6 @@ Mobile look
 ## Review 
   * Here is this repo link: https://github.com/sbolotnikov/Eat_Da_Burger
  
-  * Link: [Eat Da Burger]( https://boiling-badlands-26235.herokuapp.com/)
+  * Link: [Eat Da Burger]( https://eating-burger.onrender.com/)
 
   * Link to updated portfolio: [Portfolio]( https://sbolotnikov.github.io/Responsive-Portfolio/)
