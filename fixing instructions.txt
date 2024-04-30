@@ -1,0 +1,32 @@
+If my site is down check : 
+https://www.freesqldatabase.com/
+ 
+if expired get new temp email at 
+https://temp-mail.org/en/
+then signup with your new email
+confirm email 
+DO NOT CLOSE IT TILL THE END OF INSTRUCTIONS! ! ! ! ! !
+and wait till it live
+check for email with new settings 
+go to db and add :
+CREATE TABLE burgers(
+  id INT AUTO_INCREMENT,
+  burger_name VARCHAR(50) NOT NULL,
+  devoured BOOLEAN DEFAULT false,
+  url1 VARCHAR(300) NOT NULL,
+  PRIMARY KEY (id)
+);
+
+SELECT * FROM burgers;
+
+and
+
+INSERT INTO burgers (burger_name, devoured,url1) VALUES ('Big Mac', false,'https://cdn.pixabay.com/photo/2014/11/10/04/37/double-cheeseburger-524990_150.jpg');
+INSERT INTO burgers (burger_name, devoured,url1) VALUES ('Chicken Sandwich', false,'https://cdn.pixabay.com/photo/2014/09/03/15/05/sandwich-434658_150.jpg');
+INSERT INTO burgers (burger_name, devoured,url1) VALUES ('Ice Cream Sandwich', false,'https://cdn.pixabay.com/photo/2014/11/08/15/50/ice-cream-sandwich-522384_150.jpg');
+INSERT INTO burgers (burger_name, devoured,url1) VALUES ('Cheeseburger', true,'https://cdn.pixabay.com/photo/2015/07/01/07/06/burger-827309_150.jpg');
+INSERT INTO burgers (burger_name, devoured,url1) VALUES ('Burger King', false,'https://cdn.pixabay.com/photo/2020/06/22/16/42/food-5329794_150.jpg');
+INSERT INTO burgers (burger_name, devoured,url1) VALUES ('Wendies Burger', false,'https://cdn.pixabay.com/photo/2020/05/08/02/17/food-5143849_150.jpg');
+
+copy new enviroment variables to render.com
+DELETE EMAIL
