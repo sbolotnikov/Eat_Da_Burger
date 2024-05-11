@@ -24,6 +24,9 @@
   justify-self: stretch;
   background-color: red;
   font-size: 2rem;
+  border-radius: 0.5rem;
+  outline-width: 0px;
+  border:0px;
   font-family: 'Times New Roman', Times, serif;
 }
 .label{
@@ -41,6 +44,8 @@
 }
 .form-group {
   margin-bottom: 5px;
+  width:100%;
+  overflow: hidden;
 }
 .card{
 min-width: 100px;
