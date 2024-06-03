@@ -1,6 +1,6 @@
 var express = require("express");
 
-var PORT = process.env.PORT || 3000;
+var port = process.env.PORT || 3000;
 require('dotenv').config()
 var app = express();
 
@@ -23,8 +23,8 @@ var routes = require("./controllers/burgersController.js");
 app.use(routes);
 
 // Start our server so that it can begin listening to client requests.
-app.listen(PORT,()=> {
+app.listen(port,()=> {
   // Log (server-side) when our server has started
-  console.log("Server listening on: http://localhost:" + PORT);
+  console.log("Server listening on: http://localhost:" + port);
 });
 
